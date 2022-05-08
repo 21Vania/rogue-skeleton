@@ -9,6 +9,7 @@
 # work. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
 from __future__ import print_function
+from ctypes.wintypes import CHAR
 import random
 
 CHARACTER_TILES = {'stone': '#',
@@ -17,7 +18,11 @@ CHARACTER_TILES = {'stone': '#',
 
                     'wall': '#',
                     
-                    'equipment': '$'}
+                    'money': '$',
+                    
+                    'potion': u'\U0001F9EA',
+                    
+                    'weapon': u'\U0001F5E1'}
 
 class Generator():
     def __init__(self, width=64, height=64, max_rooms=15, min_room_xy=5, max_room_xy=10, rooms_overlap=False, random_connections=1,random_spurs=3, tiles=CHARACTER_TILES):
@@ -232,14 +237,14 @@ class Generator():
                     if self.level[row + 1][col + 1] == 'stone':
                         self.level[row + 1][col + 1] = 'wall'
         #fill with equipments
-        l = random.randint(6, 12)
+        l = random.randint(12, 30) # On choisit le nombre d'équipements à ramasser
         for i in range(l):
             row = random.randint(1, self.height - 1)
             col = random.randint(1, self.width - 1)
             while self.level[row][col] == 'stone' or self.level[row][col] == 'wall':
                 row = random.randint(1, self.height - 1)
                 col = random.randint(1, self.width - 1)
-            self.level[row][col] = 'equipment'
+            self.level[row][col] = random.choice(['money', 'potion', 'weapon'])
 
     def gen_tiles_level(self):
         for row_num, row in enumerate(self.level):
@@ -251,8 +256,12 @@ class Generator():
                     tmp_tiles.append(self.tiles['floor'])
                 if col == 'wall':
                     tmp_tiles.append(self.tiles['wall'])
-                if col == 'equipment':
-                    tmp_tiles.append(self.tiles['equipment'])
+                if col == 'money':
+                    tmp_tiles.append(self.tiles['money'])
+                if col == 'potion':
+                    tmp_tiles.append(self.tiles['potion'])
+                if col == 'weapon':
+                    tmp_tiles.append(self.tiles['weapon'])
             self.tiles_level.append(tmp_tiles)
         #print('Room List: ', self.room_list)
         #print('\nCorridor List: ', self.corridor_list)

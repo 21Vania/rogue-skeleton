@@ -29,7 +29,7 @@ class Player:
         new_x = self._x + dx
         new_y = self._y + dy
 
-# J'ai enlévé les croix que laisse le perso derrière lui qd il avance
+# J'ai enlévé les croix que laisse le perso derrière lui qd il avance parce que cétait chiant
         if map[new_y][new_x] == ".": #or map[new_y][new_x] == "x" :
             ret =True
             map[new_y][new_x] = self._symbol
@@ -39,7 +39,7 @@ class Player:
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
             self._x = new_x
             self._y = new_y
-        elif map[new_y][new_x] == '$':
+        elif map[new_y][new_x] == '$' or map[new_y][new_x] == u'\U0001F9EA' or map[new_y][new_x] == u'\U0001F5E1':
             ret = True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = "."

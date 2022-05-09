@@ -18,7 +18,7 @@ CHARACTER_TILES = {'stone': '#',
 
                     'wall': '#',
                     
-                    'money': '$',
+                    'money': u'\U0001F4B0',
                     
                     'potion': u'\U0001F9EA',
                     

@@ -12,17 +12,19 @@ from __future__ import print_function
 from ctypes.wintypes import CHAR
 import random
 
-CHARACTER_TILES = {'stone': '#',
+CHARACTER_TILES = {'stone': u'\U0001F332',
 
                     'floor': '.',
 
-                    'wall': '#',
+                    'wall': u'\U0001F332',
                     
                     'money': u'\U0001F4B0',
                     
                     'potion': u'\U0001F9EA',
                     
-                    'weapon': u'\U0001F5E1'}
+                    'weapon': u'\U0001F5E1',
+                    
+                    'life': u'\U0001F49C'}
 
 class Generator():
     def __init__(self, width=64, height=64, max_rooms=15, min_room_xy=5, max_room_xy=10, rooms_overlap=False, random_connections=1,random_spurs=3, tiles=CHARACTER_TILES):
@@ -244,7 +246,7 @@ class Generator():
             while self.level[row][col] == 'stone' or self.level[row][col] == 'wall':
                 row = random.randint(1, self.height - 1)
                 col = random.randint(1, self.width - 1)
-            self.level[row][col] = random.choice(['money', 'potion', 'weapon'])
+            self.level[row][col] = random.choice(['money', 'potion', 'weapon', 'life'])
 
     def gen_tiles_level(self):
         for row_num, row in enumerate(self.level):
@@ -262,6 +264,8 @@ class Generator():
                     tmp_tiles.append(self.tiles['potion'])
                 if col == 'weapon':
                     tmp_tiles.append(self.tiles['weapon'])
+                if col == 'life':
+                    tmp_tiles.append(self.tiles['life'])
             self.tiles_level.append(tmp_tiles)
         #print('Room List: ', self.room_list)
         #print('\nCorridor List: ', self.corridor_list)

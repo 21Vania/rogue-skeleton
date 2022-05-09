@@ -31,7 +31,7 @@ class Player:
 
 # J'ai enlévé les croix que laisse le perso derrière lui qd il avance parce que cétait chiant
         if map[new_y][new_x] == ".": #or map[new_y][new_x] == "x" :
-            ret =True
+            ret = True
             map[new_y][new_x] = self._symbol
             #map[self._y][self._x] = "x"
             map[self._y][self._x] = "."

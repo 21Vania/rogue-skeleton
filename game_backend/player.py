@@ -39,7 +39,7 @@ class Player:
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
             self._x = new_x
             self._y = new_y
-        elif map[new_y][new_x] == u'\U0001F4B0' or map[new_y][new_x] == u'\U0001F9EA' or map[new_y][new_x] == u'\U0001F5E1':
+        elif map[new_y][new_x] == u'\U0001F4B0' or map[new_y][new_x] == u'\U0001F9EA' or map[new_y][new_x] == u'\U0001F5E1' or map[new_y][new_x] == u'\U0001F49C':
             ret = True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = "."

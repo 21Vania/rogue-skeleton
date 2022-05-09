@@ -9,14 +9,13 @@
 # work. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
 from __future__ import print_function
-from ctypes.wintypes import CHAR
 import random
 
-CHARACTER_TILES = {'stone': u'\U0001F332',
+CHARACTER_TILES = {'stone': '#', #u'\U0001F332'
 
                     'floor': '.',
 
-                    'wall': u'\U0001F332',
+                    'wall': '#',
                     
                     'money': u'\U0001F4B0',
                     

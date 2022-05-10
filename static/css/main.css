@@ -21,3 +21,8 @@ body{
     opacity: 0.75;
     color: cyan;
 }
+
+.dimension{
+    height:28px;
+    width:28px;
+}

@@ -56,4 +56,35 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
     });
 
+    var btn_n2 = document.getElementById("go_2n2");
+    btn_n2.onclick = function(e) {
+        console.log("Clicked on button north2");
+        socket.emit("move", {dx:0, dy:-1});
+    };
+
+    var btn_s2 = document.getElementById("go_s2");
+    btn_s2.onclick = function(e) {
+        console.log("Clicked on button south2");
+        socket.emit("move", {dx:0, dy:1});
+    };
+
+    var btn_w2 = document.getElementById("go_w2");
+    btn_w2.onclick = function(e) {
+        console.log("Clicked on button w2");
+        socket.emit("move", {dx:-1, dy:0});
+    };
+
+    var btn_e2 = document.getElementById("go_e2");
+    btn_e2.onclick = function(e) {
+        console.log("Clicked on button e2");
+        socket.emit("move", {dx:1, dy:0});
+    };
+
+
+
+
+
+
+
+
 });

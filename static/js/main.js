@@ -35,7 +35,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     };
     
-    //bouton déplacement premier joueur
+    //bouton déplacement premier joueur.
     var btn_n = document.getElementById("go_n");
     btn_n.onclick = function(e) {
         console.log("Clicked on button north");

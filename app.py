@@ -28,7 +28,7 @@ def on_move_msg2(json, methods=["GET", "POST"]):
     dx = json['dx']
     dy = json["dy"]
 
-    data, ret = game.move(dx,dy)
+    data, ret = game.move2(dx,dy)
     if ret:
         socketio.emit("response", data)
 

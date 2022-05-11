@@ -16,10 +16,16 @@ body{
     max-width:120px;
 }
 
-.keypad_btn{
+.keypad_btn1{
     background-color: black;
     opacity: 0.75;
     color: cyan;
+}
+
+.keypad_btn2{               /* on crée une classe différente pour différencier les deux "joytick" */
+    background-color: black;
+    opacity: 0.75;
+    color: rgb(255, 0, 162);
 }
 
 .dimension{

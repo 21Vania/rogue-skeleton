@@ -38,6 +38,7 @@ def on_move_msg2(json, methods=["GET", "POST"]):
 
 
 if __name__=="__main__":
-    socketio.run(app, port=5001)
+    socketio.run(app, port=5001, debug=True)
+
 
 

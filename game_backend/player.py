@@ -29,6 +29,8 @@ class Player:
     def move(self, dx, dy, map):
         new_x = self._x + dx
         new_y = self._y + dy
+        print("testing move function")
+        print(f"{map[new_y][new_x]=}")
 
 # J'ai enlévé les croix que laisse le perso derrière lui qd il avance parce que cétait chiant
         if map[new_y][new_x] == '.': #or map[new_y][new_x] == "x" :
@@ -82,8 +84,10 @@ class Player2:
         new_x = self._x + dx
         new_y = self._y + dy
 
-# J'ai enlévé les croix que laisse le perso derrière lui qd il avance parce que cétait chiant
+
+        # J'ai enlévé les croix que laisse le perso derrière lui qd il avance parce que cétait chiant
         if map[new_y][new_x] == ".": #or map[new_y][new_x] == "x" :
+            print("first condition reached")
             ret = True
             map[new_y][new_x] = self._symbol
             #map[self._y][self._x] = "x"

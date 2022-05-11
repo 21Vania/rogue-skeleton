@@ -7,6 +7,7 @@ class Player:
         self._y = None
 
     def initPos(self, _map):
+        
         n_row = len(_map)
         #n_col = len(_map[0])
 
@@ -68,7 +69,7 @@ class Player2:
             y_init += 1
             for i,c in enumerate(_map[y_init]):
                 if c == ".":
-                    x_init = n_col - i     #on le place initialement à l'opposé du premier jour, tout à droite vers le milieu du coté
+                    x_init = n_col - 1 - i     #on le place initialement à l'opposé du premier jour, tout à droite vers le milieu du coté
                     found = True
                     break
 

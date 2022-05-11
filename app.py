@@ -23,7 +23,7 @@ def on_move_msg(json, methods=["GET", "POST"]):
         socketio.emit("response", data)
         
 @socketio.on("move player2")
-def on_move_msg(json, methods=["GET", "POST"]):
+def on_move_msg2(json, methods=["GET", "POST"]):
     print("received move ws message")
     dx = json['dx']
     dy = json["dy"]

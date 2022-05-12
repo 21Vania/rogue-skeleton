@@ -48,13 +48,10 @@ body{
 
 .item-b {
     grid-area: header2;
-    color :rgb(255, 0, 162)
-.dimension{
-    height:28px;
-    width:28px;
+    color :rgb(255, 0, 162);
 }
 
-.boxtitle{
+.boxtitle {
     font-size: x-large;
     background-color: red;
 

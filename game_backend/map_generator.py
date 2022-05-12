@@ -23,7 +23,8 @@ CHARACTER_TILES = {'stone': '#', #u'\U0001F332'
                     
                     'weapon': 'w', #u'\U0001F5E1'
                     
-                    'life': 'l'} #u'\U0001F49C'
+                    'life': 'l'
+                    'monster': 'm'} #u'\U0001F49C'
 
 class Generator():
     def __init__(self, width=64, height=64, max_rooms=15, min_room_xy=5, max_room_xy=10, rooms_overlap=False, random_connections=1,random_spurs=3, tiles=CHARACTER_TILES):
@@ -237,15 +238,26 @@ class Generator():
                         self.level[row + 1][col] = 'wall'
                     if self.level[row + 1][col + 1] == 'stone':
                         self.level[row + 1][col + 1] = 'wall'
+        #fill with monsters
+        nb_monsters = 3   #à faire varier en fonction du niveau 
+        for i in range(nb_monsters):
+            row = random.randint(1, self.height - 1)
+            col = random.randint(1, self.width - 1)
+            while self.level[row][col] == 'stone' or self.level[row][col] == 'wall' or self.level[row][col] == 'monster':
+                row = random.randint(1, self.height - 1)
+                col = random.randint(1, self.width - 1)
+            self.level[row][col] = 'monster'
         #fill with equipments
         l = random.randint(12, 30) # On choisit le nombre d'équipements à ramasser
         for i in range(l):
             row = random.randint(1, self.height - 1)
             col = random.randint(1, self.width - 1)
-            while self.level[row][col] == 'stone' or self.level[row][col] == 'wall':
+            while self.level[row][col] == 'stone' or self.level[row][col] == 'wall' or self.level[row][col] == 'monster':
                 row = random.randint(1, self.height - 1)
                 col = random.randint(1, self.width - 1)
             self.level[row][col] = random.choice(['money', 'potion', 'weapon', 'life'])
+        
+
 
     def gen_tiles_level(self):
         for row_num, row in enumerate(self.level):

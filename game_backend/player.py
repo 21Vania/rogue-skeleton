@@ -69,9 +69,9 @@ class Player2:
         found = False
         while found is False:
             y_init += 1
-            for i,c in enumerate(_map[y_init]):
+            for i,c in reversed(list(enumerate(_map[y_init]))): #on doit parcourir la liste à l'envers
                 if c == ".":
-                    x_init = n_col - 1 - i     #on le place initialement à l'opposé du premier jour, tout à droite vers le milieu du coté
+                    x_init = i     #on le place initialement à l'opposé du premier jour, tout à droite vers le milieu du coté
                     found = True
                     break
 

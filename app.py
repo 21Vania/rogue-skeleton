@@ -4,7 +4,7 @@ from flask_socketio import SocketIO
 from game_backend import Game
 
 app = Flask(__name__)
-socketio = SocketIO(app)
+socketio = SocketIO(app)    
 game = Game()
 
 

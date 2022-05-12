@@ -6,30 +6,29 @@ window.addEventListener("DOMContentLoaded", (event) => {
     document.onkeydown = function(e){
         switch(e.keyCode){
             case 37:
-                socket.emit("move player1", {dx:-1, dy:0});
+                socket.emit("move player2", {dx:-1, dy:0});
                 break;
             case 38:
-                socket.emit("move player1", {dx:0, dy:-1});
+                socket.emit("move player2", {dx:0, dy:-1});
                 break;
             case 39:
-                socket.emit("move player1", {dx:1, dy:0});
+                socket.emit("move player2", {dx:1, dy:0});
                 break;
             case 40:
-                socket.emit("move player1", {dx:0, dy:1});
+                socket.emit("move player2", {dx:0, dy:1});
                 break;
     
             case 81:
-                console.log("move player with key 81")
-                socket.emit("move player2", {dx:-1, dy:0});
+                socket.emit("move player1", {dx:-1, dy:0});
                 break;
             case 90:
-                socket.emit("move player2", {dx:0, dy:-1});
+                socket.emit("move player1", {dx:0, dy:-1});
                 break;
             case 68:
-                socket.emit("move player2", {dx:1, dy:0});
+                socket.emit("move player1", {dx:1, dy:0});
                 break;
             case 83:
-                socket.emit("move player2", {dx:0, dy:1});
+                socket.emit("move player1", {dx:0, dy:1});
                 break;
         }
 
@@ -62,7 +61,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     };
 
     //bouton déplacement deuxième joueur
-    var btn_n2 = document.getElementById("go_2n2");
+    var btn_n2 = document.getElementById("go_n2");
     btn_n2.onclick = function(e) {
         console.log("Clicked on button north2");
         socket.emit("move player2", {dx:0, dy:-1});

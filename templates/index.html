@@ -24,6 +24,16 @@
                 <div class="key"></div>
             </div>
 
+            <div id="console" style="font-family: monospace;">
+                {% for i in range(n_row) %}
+                <div style="height: 18px">  <!-- 18px -->
+                    {% for j in range(n_col) %}
+                    <span id="{{ 'cell {}-{}'.format(i,j) }}"> {{ mapdata[i][j] }} </span>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+
             <div class="thekeypad" class="item-d">
                 <div class="key"></div>                    <div class="key"><input id="go_n2" class="keypad_btn2" type="button" value="&#9650"> </div> <!-- value à modifer ? -->
                 <div class="key"></div>
@@ -35,15 +45,7 @@
                 <div class="key"></div>
             </div>
 
-            <div id="console" style="font-family: monospace;">
-                {% for i in range(n_row) %}
-                <div style="height: 18px">  <!-- 18px -->
-                    {% for j in range(n_col) %}
-                    <span id="{{ 'cell {}-{}'.format(i,j) }}"> {{ mapdata[i][j] }} </span>
-                    {% endfor %}
-                </div>
-                {% endfor %}
-            </div>
+
         </div>
 
         <div class="container">

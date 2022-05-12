@@ -5,7 +5,7 @@
         <script type="text/javascript" src={{ url_for("static", filename="js/main.js") }}></script>
     </head>
     <body>
-        <div> <b> Rogue Flask </b></div>
+        <div> <h1> Rogue Flask </h1></div>
 
         <div class="flexbox">
             <div class="thekeypad">
@@ -13,16 +13,14 @@
                 <div class="key"><input id="go_n" class="keypad_btn1" type="button" value="&#9650"> </div>
                 <div class="key"></div>
                 <div class="key"><input id="go_w" class="keypad_btn1" type="button" value="&#9664"></div>
-                <div class="key"></div>
-                <div class="key"><input id="go_e" class="keypad_btn1" type="button" value="&#9654"></div>
+                <div class="key"></div>                    <div class="key"><input id="go_e" class="keypad_btn1" type="button" value="&#9654"></div>
                 <div class="key"></div>
                 <div class="key"><input id="go_s" class="keypad_btn1" type="button" value="&#9660"></div>
                 <div class="key"></div>
             </div>
 
-            <div class="thekeypad">
-                <div class="key"></div>
-                <div class="key"><input id="go_n2" class="keypad_btn2" type="button" value="&#9650"> </div> <!-- value à modifer ? -->
+            <div class="thekeypad" class="item-d">
+                <div class="key"></div>                    <div class="key"><input id="go_n2" class="keypad_btn2" type="button" value="&#9650"> </div> <!-- value à modifer ? -->
                 <div class="key"></div>
                 <div class="key"><input id="go_w2" class="keypad_btn2" type="button" value="&#9664"></div>
                 <div class="key"></div>
@@ -42,6 +40,43 @@
                 {% endfor %}
             </div>
         </div>
+
+        <div class="container">
+            <div class="item-a">
+                <h1> Player 1 </h1>
+                <ul>
+                    <li>
+                        Life
+                    </li>
+                    <li>
+                        Potion
+                    </li>
+                    <li>
+                        Weapon
+                    </li>
+                    <li>
+                        Money
+                    </li>
+                </ul>
+            </div>
+
+            <div class="item-b">
+                <h1> Player 2 </h1>
+                <ul>
+                    <li>
+                        Life
+                    </li>
+                    <li>
+                        Potion
+                    </li>
+                    <li>
+                        Weapon
+                    </li>
+                    <li>
+                        Money
+                    </li>
+                </ul>
+            </div>
 
     </body>
 </html>

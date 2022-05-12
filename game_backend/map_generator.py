@@ -23,8 +23,10 @@ CHARACTER_TILES = {'stone': '#', #u'\U0001F332'
                     
                     'weapon': 'w', #u'\U0001F5E1'
                     
-                    'life': 'l'
-                    'monster': 'm'} #u'\U0001F49C'
+                    'life': 'l',#u'\U0001F49C'
+
+                    'monster': 'm'
+                    } 
 
 class Generator():
     def __init__(self, width=64, height=64, max_rooms=15, min_room_xy=5, max_room_xy=10, rooms_overlap=False, random_connections=1,random_spurs=3, tiles=CHARACTER_TILES):
@@ -277,6 +279,8 @@ class Generator():
                     tmp_tiles.append(self.tiles['weapon'])
                 if col == 'life':
                     tmp_tiles.append(self.tiles['life'])
+                if col == 'monster':
+                    tmp_tiles.append(self.tiles['monster'])
             self.tiles_level.append(tmp_tiles)
         #print('Room List: ', self.room_list)
         #print('\nCorridor List: ', self.corridor_list)

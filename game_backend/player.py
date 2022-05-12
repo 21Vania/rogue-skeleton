@@ -42,7 +42,7 @@ class Player:
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
             self._x = new_x
             self._y = new_y
-        elif map[new_y][new_x] == 'p' or map[new_y][new_x] == 'w' or map[new_y][new_x] == 'l' or map[new_y][new_x] == 'm':
+        elif map[new_y][new_x] == 'p' or map[new_y][new_x] == 'w' or map[new_y][new_x] == 'l' or map[new_y][new_x] == '$' or map[new_y][new_x] == 'm':
             ret = True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = "."
@@ -96,7 +96,7 @@ class Player2:
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
             self._x = new_x
             self._y = new_y
-        elif map[new_y][new_x] == 'p' or map[new_y][new_x] == 'w' or map[new_y][new_x] == 'l' or map[new_y][new_x] == 'm':
+        elif map[new_y][new_x] == 'p' or map[new_y][new_x] == 'w' or map[new_y][new_x] == 'l' or map[new_y][new_x] == 'm' or map[new_y][new_x] == '$':
             ret = True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = "."

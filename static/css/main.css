@@ -52,12 +52,13 @@ body{
 }
 
 .boxtitle {
-    font-size: x-large;
+    font-size: 300%;
+    font-family: Impact;
     background-color: red;
 
-    padding-top: 10px;
+    padding-top: 15px;
     padding-right: 20px;
-    padding-bottom: 5px; 
+    padding-bottom: 15px; 
     padding-left: 40px;
 
     border-bottom-width: 5px;

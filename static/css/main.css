@@ -28,6 +28,7 @@ body{
     color: rgb(255, 0, 162);
 }
 
+<<<<<<< Updated upstream
 .container {
     display: grid;
     grid-template-columns: 
@@ -49,4 +50,27 @@ body{
 .item-b {
     grid-area: header2;
     color :rgb(255, 0, 162)
+=======
+.dimension{
+    height:28px;
+    width:28px;
+}
+
+.boxtitle{
+    font-size: x-large;
+    background-color: red;
+
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 5px; 
+    padding-left: 40px;
+
+    border-bottom-width: 5px;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+>>>>>>> Stashed changes
 }

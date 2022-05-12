@@ -28,7 +28,25 @@ body{
     color: rgb(255, 0, 162);
 }
 
-.dimension{
-    height:28px;
-    width:28px;
+.container {
+    display: grid;
+    grid-template-columns: 
+      1fr 1fr;
+    grid-column-gap: 5px;
+    grid-template-areas: 
+      "header1" "header2"
+      "main1"   "main2";
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.item-a {
+    grid-area: header1;
+    color: cyan;
+}
+
+.item-b {
+    grid-area: header2;
+    color :rgb(255, 0, 162)
 }

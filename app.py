@@ -1,3 +1,4 @@
+from this import d
 from flask import Flask, render_template 
 from flask_socketio import SocketIO
 from game_backend import Game
@@ -19,7 +20,9 @@ def on_move_msg(json, methods=["GET", "POST"]):
     dy = json["dy"]
 
     data, ret = game.move(dx,dy)
+    print(data)
     if ret:
+        print('ret ok man')
         socketio.emit("response", data)
         
 @socketio.on("move player2")
@@ -29,11 +32,13 @@ def on_move_msg2(json, methods=["GET", "POST"]):
     dy = json["dy"]
 
     data, ret = game.move2(dx,dy)
+    print(data)
     if ret:
         socketio.emit("response", data)
 
 
 if __name__=="__main__":
-    socketio.run(app, port=5001)
+    socketio.run(app, port=5001, debug=True)
+
 
 

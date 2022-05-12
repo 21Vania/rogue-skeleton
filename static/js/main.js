@@ -19,6 +19,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 break;
     
             case 81:
+                console.log("move player with key 81")
                 socket.emit("move player2", {dx:-1, dy:0});
                 break;
             case 90:
@@ -85,7 +86,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
         socket.emit("move player2", {dx:1, dy:0});
     };
 
-    socket.on("response", function(data){       //en créer 2?
+    socket.on("response", function(data){
+        console.log("helllooooo")      //en créer 2?
         console.log(data);
         for( var i=0; i<2; i++){
             var cell_id = "cell " + data[i].i + "-" + data[i].j;

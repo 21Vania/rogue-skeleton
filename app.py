@@ -19,11 +19,12 @@ def on_move_msg(json, methods=["GET", "POST"]):
     dx = json['dx']
     dy = json["dy"]
 
-    data, ret = game.move(dx,dy)
+    data, ret, items = game.move(dx,dy)
     print(data)
     if ret:
         print('ret ok man')
         socketio.emit("response", data)
+        socketio.emit("response1", items)
         
 @socketio.on("move player2")
 def on_move_msg2(json, methods=["GET", "POST"]):
@@ -31,10 +32,11 @@ def on_move_msg2(json, methods=["GET", "POST"]):
     dx = json['dx']
     dy = json["dy"]
 
-    data, ret = game.move2(dx,dy)
+    data, ret, items = game.move2(dx,dy)
     print(data)
     if ret:
         socketio.emit("response", data)
+        socketio.emit("response2", items)
 
 
 if __name__=="__main__":

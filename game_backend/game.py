@@ -1,6 +1,7 @@
 from .map_generator import Generator
 from .player import Player
 from .player import Player2
+from .player import Monster
 
 
 class Game:
@@ -16,6 +17,9 @@ class Game:
         self._player2 = Player2()
         self._player2.initPos( self._map )
 
+        self._monster = Monster()
+        self._monster.initPos( self._map )
+
     def getMap(self):
         return self._map
 
@@ -24,3 +28,6 @@ class Game:
 
     def move2(self, dx, dy):
         return self._player2.move(dx, dy, self._map)
+    
+    def move_monster(self, dx, dy):
+        return self._monster.move(dx, dy, self._map)

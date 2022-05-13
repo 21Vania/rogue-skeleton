@@ -2,6 +2,7 @@ from this import d
 from flask import Flask, render_template 
 from flask_socketio import SocketIO
 from game_backend import Game
+import random
 
 app = Flask(__name__)
 socketio = SocketIO(app)    
@@ -38,6 +39,19 @@ def on_move_msg2(json, methods=["GET", "POST"]):
         socketio.emit("response", data)
         socketio.emit("response2", items)
 
+@socketio.on("move_monster")
+def on_move_monster(methods=["GET", "POST"]):
+    dict = {'dx':0, 'dy':0}
+    d = random.choice(['dx', 'dy'])
+    r = random.choice([-1, 1])
+    dict[d] = r
+    dx = dict['dx']
+    dy = dict['dy']
+
+    data, ret = game.move_monster(dx, dy)
+    print(data)
+    if ret:
+        socketio.emit("response", data)
 
 if __name__=="__main__":
     socketio.run(app, port=5001) #debug=True

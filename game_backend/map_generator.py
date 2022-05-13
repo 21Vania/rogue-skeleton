@@ -241,14 +241,14 @@ class Generator():
                     if self.level[row + 1][col + 1] == 'stone':
                         self.level[row + 1][col + 1] = 'wall'
         #fill with monsters
-        nb_monsters = 3   #à faire varier en fonction du niveau 
+        """nb_monsters = 3   #à faire varier en fonction du niveau 
         for i in range(nb_monsters):
             row = random.randint(1, self.height - 1)
             col = random.randint(1, self.width - 1)
             while self.level[row][col] == 'stone' or self.level[row][col] == 'wall' or self.level[row][col] == 'monster':
                 row = random.randint(1, self.height - 1)
                 col = random.randint(1, self.width - 1)
-            self.level[row][col] = 'monster'
+            self.level[row][col] = 'monster'"""
         #fill with equipments
         l = random.randint(12, 30) # On choisit le nombre d'équipements à ramasser
         for i in range(l):

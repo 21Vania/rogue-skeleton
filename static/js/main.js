@@ -95,7 +95,25 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
     });
 
-    
+    socket.on("response1", function(items){
+        console.log(items);
+        for( var i=0; i<2; i++){
+            document.getElementById("life").textContent = `Life : ${items[i].life}`;
+            document.getElementById("potion").textContent = `Potion : ${items[i].potion}`;
+            document.getElementById("weapon").textContent = `Weapon : ${items[i].weapon}`;
+            document.getElementById("money").textContent = `Money : ${items[i].money}`;
+        }
+    })
+
+    socket.on("response2", function(items){
+        console.log(items);
+        for( var i=0; i<2; i++){
+            document.getElementById("life2").textContent = `Life : ${items[i].life}`;
+            document.getElementById("potion2").textContent = `Potion : ${items[i].potion}`;
+            document.getElementById("weapon2").textContent = `Weapon : ${items[i].weapon}`;
+            document.getElementById("money2").textContent = `Money : ${items[i].money}`;
+        }
+    })
 
 
 

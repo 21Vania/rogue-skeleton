@@ -5,6 +5,10 @@ class Player:
         self._symbol = symbol
         self._x = None
         self._y = None
+        self.life = 1
+        self.potion = 0
+        self.weapon = 0
+        self.money = 0
 
     def initPos(self, _map):
         
@@ -40,19 +44,54 @@ class Player:
             map[self._y][self._x] = "."
             #data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"x"}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
+            items = [{"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}, {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}]
             self._x = new_x
             self._y = new_y
-        elif map[new_y][new_x] == 'p' or map[new_y][new_x] == 'w' or map[new_y][new_x] == 'l' or map[new_y][new_x] == '$' or map[new_y][new_x] == 'm':
+        elif map[new_y][new_x] == 'l':
             ret = True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = "."
+            new_life = self.life + 1
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
+            items = [{"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}, {"life": new_life, "potion": self.potion, "weapon": self.weapon, "money": self.money}]
+            self.life = new_life
+            self._x = new_x
+            self._y = new_y
+        elif map[new_y][new_x] == 'p':
+            ret = True
+            map[new_y][new_x] = self._symbol
+            map[self._y][self._x] = "."
+            new_potion = self.potion + 1
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
+            items = [{"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}, {"life": self.life, "potion": new_potion, "weapon": self.weapon, "money": self.money}]
+            self.potion = new_potion
+            self._x = new_x
+            self._y = new_y
+        elif map[new_y][new_x] == 'w':
+            ret = True
+            map[new_y][new_x] = self._symbol
+            map[self._y][self._x] = "."
+            new_weapon = self.weapon + 1
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
+            items = [{"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}, {"life": self.life, "potion": self.potion, "weapon": new_weapon, "money": self.money}]
+            self.weapon = new_weapon
+            self._x = new_x
+            self._y = new_y
+        elif map[new_y][new_x] == '$':
+            ret = True
+            map[new_y][new_x] = self._symbol
+            map[self._y][self._x] = "."
+            new_money = self.money + 1
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
+            items = [{"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}, {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": new_money}]
+            self.money = new_money
             self._x = new_x
             self._y = new_y
         else:
             ret = False
             data = []
-        return data, ret
+            items = [{"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}, {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}]
+        return data, ret, items
 
 
 class Player2:
@@ -60,6 +99,10 @@ class Player2:
         self._symbol = symbol 
         self._x = None
         self._y = None
+        self.life = 1
+        self.potion = 0
+        self.weapon = 0
+        self.money = 0
 
     def initPos(self, _map):
         n_row = len(_map)
@@ -84,26 +127,59 @@ class Player2:
         new_x = self._x + dx
         new_y = self._y + dy
 
-
-        # J'ai enlévé les croix que laisse le perso derrière lui qd il avance parce que cétait chiant
-        if map[new_y][new_x] == ".": #or map[new_y][new_x] == "x" :
-            print("first condition reached")
+# J'ai enlévé les croix que laisse le perso derrière lui qd il avance parce que cétait chiant
+        if map[new_y][new_x] == '.': #or map[new_y][new_x] == "x" :
             ret = True
             map[new_y][new_x] = self._symbol
             #map[self._y][self._x] = "x"
             map[self._y][self._x] = "."
             #data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"x"}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
-            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
+            items = [{"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}, {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}]
             self._x = new_x
             self._y = new_y
-        elif map[new_y][new_x] == 'p' or map[new_y][new_x] == 'w' or map[new_y][new_x] == 'l' or map[new_y][new_x] == 'm' or map[new_y][new_x] == '$':
+        elif map[new_y][new_x] == 'l':
             ret = True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = "."
-            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
+            new_life = self.life + 1
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
+            items = [{"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}, {"life": new_life, "potion": self.potion, "weapon": self.weapon, "money": self.money}]
+            self.life = new_life
+            self._x = new_x
+            self._y = new_y
+        elif map[new_y][new_x] == 'p':
+            ret = True
+            map[new_y][new_x] = self._symbol
+            map[self._y][self._x] = "."
+            new_potion = self.potion + 1
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
+            items = [{"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}, {"life": self.life, "potion": new_potion, "weapon": self.weapon, "money": self.money}]
+            self.potion = new_potion
+            self._x = new_x
+            self._y = new_y
+        elif map[new_y][new_x] == 'w':
+            ret = True
+            map[new_y][new_x] = self._symbol
+            map[self._y][self._x] = "."
+            new_weapon = self.weapon + 1
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
+            items = [{"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}, {"life": self.life, "potion": self.potion, "weapon": new_weapon, "money": self.money}]
+            self.weapon = new_weapon
+            self._x = new_x
+            self._y = new_y
+        elif map[new_y][new_x] == '$':
+            ret = True
+            map[new_y][new_x] = self._symbol
+            map[self._y][self._x] = "."
+            new_money = self.money + 1
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
+            items = [{"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}, {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": new_money}]
+            self.money = new_money
             self._x = new_x
             self._y = new_y
         else:
             ret = False
             data = []
-        return data, ret
+            items = [{"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}, {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}]
+        return data, ret, items

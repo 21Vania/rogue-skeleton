@@ -20,11 +20,15 @@ def on_move_msg(json, methods=["GET", "POST"]):
     dx = json['dx']
     dy = json["dy"]
 
-    data, ret, items = game.move(dx,dy)
+    data, ret, items, alive = game.move(dx,dy)
     print(data)
     if ret:
         print('ret ok man')
         socketio.emit("response", data)
+        socketio.emit("response1", items)
+    if not alive:
+        print('player1 is dead')
+        socketio.emit("death p1")
         socketio.emit("response1", items)
         
 @socketio.on("move player2")
@@ -33,10 +37,14 @@ def on_move_msg2(json, methods=["GET", "POST"]):
     dx = json['dx']
     dy = json["dy"]
 
-    data, ret, items = game.move2(dx,dy)
+    data, ret, items, alive = game.move2(dx,dy)
     print(data)
     if ret:
         socketio.emit("response", data)
+        socketio.emit("response2", items)
+    if not alive:
+        print('player2 is dead')
+        socketio.emit("death p2")
         socketio.emit("response2", items)
 
 @socketio.on("move_monster")

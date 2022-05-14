@@ -69,3 +69,9 @@ body{
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+.kill_monster {
+    font-size: 200%;
+    display: flex;
+    align-items: center;
+}

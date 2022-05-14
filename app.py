@@ -16,15 +16,18 @@ def index():
 
 @socketio.on("move player1")
 def on_move_msg(json, methods=["GET", "POST"]):
-    print("received move ws message")
+    #print("received move ws message")
     dx = json['dx']
     dy = json["dy"]
 
-    data, ret, items, alive = game.move(dx,dy)
-    print(data)
+    data, ret, items, alive, monster_killed = game.move(dx,dy)
+    #print(data)
     if ret:
-        print('ret ok man')
+        #print('ret ok man')
         socketio.emit("response", data)
+        socketio.emit("response1", items)
+    if monster_killed:
+        socketio.emit("monster killed p1")
         socketio.emit("response1", items)
     elif not ret:
         socketio.emit("response1", items)
@@ -35,14 +38,17 @@ def on_move_msg(json, methods=["GET", "POST"]):
         
 @socketio.on("move player2")
 def on_move_msg2(json, methods=["GET", "POST"]):
-    print("received move ws message")
+    #print("received move ws message")
     dx = json['dx']
     dy = json["dy"]
 
-    data, ret, items, alive = game.move2(dx,dy)
-    print(data)
+    data, ret, items, alive, monster_killed = game.move2(dx,dy)
+    #print(data)
     if ret:
         socketio.emit("response", data)
+        socketio.emit("response2", items)
+    if monster_killed:
+        socketio.emit("monster killed p2")
         socketio.emit("response2", items)
     elif not ret:
         socketio.emit("response2", items)
@@ -61,7 +67,6 @@ def on_move_monster(methods=["GET", "POST"]):
     dy = dict['dy']
 
     data, ret = game.move_monster(dx, dy)
-    print(data)
     if ret:
         socketio.emit("response", data)
 

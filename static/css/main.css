@@ -75,3 +75,18 @@ body{
     display: flex;
     align-items: center;
 }
+
+.boxrules {
+    font-size: 200%;
+    font-family: Impact;
+    background-color: rgb(236, 158, 158);
+
+    padding-top: 15px;
+    padding-right: 20px;
+    padding-bottom: 15px; 
+    padding-left: 40px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}

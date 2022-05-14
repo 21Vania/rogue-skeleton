@@ -113,45 +113,27 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     socket.on("response1", function(items){
         console.log(items);
-        for( var i=0; i<2; i++){
-            document.getElementById("life").textContent = `Life : ${items[i].life}`;
-            document.getElementById("potion").textContent = `Potion : ${items[i].potion}`;
-            document.getElementById("weapon").textContent = `Weapon : ${items[i].weapon}`;
-            document.getElementById("money").textContent = `Money : ${items[i].money}`;
-        }
+        document.getElementById("life").textContent = `Life : ${items.life}`;
+        document.getElementById("potion").textContent = `Potion : ${items.potion}`;
+        document.getElementById("weapon").textContent = `Weapon : ${items.weapon}`;
+        document.getElementById("money").textContent = `Money : ${items.money}`;
     });
 
     socket.on("response2", function(items){
         console.log(items);
-        for( var i=0; i<2; i++){
-            document.getElementById("life2").textContent = `Life : ${items[i].life}`;
-            document.getElementById("potion2").textContent = `Potion : ${items[i].potion}`;
-            document.getElementById("weapon2").textContent = `Weapon : ${items[i].weapon}`;
-            document.getElementById("money2").textContent = `Money : ${items[i].money}`;
-        }
+        document.getElementById("life2").textContent = `Life : ${items.life}`;
+        document.getElementById("potion2").textContent = `Potion : ${items.potion}`;
+        document.getElementById("weapon2").textContent = `Weapon : ${items.weapon}`;
+        document.getElementById("money2").textContent = `Money : ${items.money}`;
     });
 
-    /*function movement(){
-        var dict = {dx:0, dy:0};
-        var x = math.floor(math.random()*2);
-        var y = math.floor(math.random()*2);
-        if (x>0) {
-            if (y>0) {
-                dict.dy = 1
-            } else {
-                dict.dy = -1
-            }
-        } else {
-            if (y>0) {
-                dict.dx = 1
-            } else {
-                dict.dx = -1
-            }
-        }
-        return dict
-    };
+    socket.on("death p1", function(){
+        document.getElementById("player1").textContent = 'Player 1 is dead';
+    });
 
-    socket.emit("move monster", movement)*/
+    socket.on("death p2", function(){
+        document.getElementById("player2").textContent = 'Player 2 is dead';
+    });
 
 
 

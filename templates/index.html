@@ -35,7 +35,7 @@
                 {% endfor %}
             </div>
 
-            <div class="thekeypad" class="item-d">
+            <div class="thekeypad">
                 <div class="key"></div>                    
                 <div class="key"><input id="go_n2" class="keypad_btn2" type="button" value="&#9650"> </div> <!-- value à modifer ? -->
                 <div class="key"></div>
@@ -51,7 +51,7 @@
 
         <div class="container">
             <div class="item-a">
-                <h1> Player 1 </h1>
+                <h1 id="player1"> Player 1 </h1>
                 <ul>
                     <li>
                         <span id="{{ 'life' }}"> Life : 1 </span>
@@ -69,7 +69,7 @@
             </div>
 
             <div class="item-b">
-                <h1> Player 2 </h1>
+                <h1 id="player2"> Player 2 </h1>
                 <ul>
                     <li>
                         <span id="{{ 'life2' }}"> Life : 1 </span>

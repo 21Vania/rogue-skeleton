@@ -5,19 +5,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     document.onkeydown = function(e){
         switch(e.keyCode){
-            case 37:
+            case 75:
                 socket.emit("move player2", {dx:-1, dy:0});
                 socket.emit("move_monster");
                 break;
-            case 38:
+            case 79:
                 socket.emit("move player2", {dx:0, dy:-1});
                 socket.emit("move_monster");
                 break;
-            case 39:
+            case 77:
                 socket.emit("move player2", {dx:1, dy:0});
                 socket.emit("move_monster");
                 break;
-            case 40:
+            case 76:
                 socket.emit("move player2", {dx:0, dy:1});
                 socket.emit("move_monster");
                 break;

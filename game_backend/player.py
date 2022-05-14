@@ -39,6 +39,7 @@ class Player:
             if map[new_y][new_x] == '.':
                 ret = True
                 alive = True
+                monster_killed = False
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
                 data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
@@ -48,6 +49,7 @@ class Player:
             elif map[new_y][new_x] == 'l':
                 ret = True
                 alive = True
+                monster_killed = False
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
                 self.life = self.life + 1
@@ -58,6 +60,7 @@ class Player:
             elif map[new_y][new_x] == 'p':
                 ret = True
                 alive = True
+                monster_killed = False
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
                 self.potion = self.potion + 1
@@ -68,6 +71,7 @@ class Player:
             elif map[new_y][new_x] == 'w':
                 ret = True
                 alive = True
+                monster_killed = False
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
                 self.weapon = self.weapon + 1
@@ -78,6 +82,7 @@ class Player:
             elif map[new_y][new_x] == '$':
                 ret = True
                 alive = True
+                monster_killed = False
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
                 self.money = self.money + 1
@@ -89,31 +94,36 @@ class Player:
                 if self.weapon > 0:
                     ret = False
                     alive = True
+                    monster_killed = True
                     self.weapon = self.weapon - 1
                     data = []
                     items = {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}
                 else:
                     ret = False
                     alive = True
+                    monster_killed = False
                     self.life = self.life - 1
                     data = []
                     items = {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}
                     if self.life == 0:
                         ret = False
                         alive = False
+                        monster_killed = False
                         data = []
                         items = {"life": 0, "potion": self.potion, "weapon": self.weapon, "money": self.money}
             else:
                 ret = False
                 alive = True
+                monster_killed = False
                 data = []
                 items = {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}
         else:
             ret = False
             alive = False
+            monster_killed = False
             data = []
             items = {"life": 0, "potion": self.potion, "weapon": self.weapon, "money": self.money}
-        return data, ret, items, alive
+        return data, ret, items, alive, monster_killed
 
 
 class Player2:
@@ -154,6 +164,7 @@ class Player2:
             if map[new_y][new_x] == '.':
                 ret = True
                 alive = True
+                monster_killed = False
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
                 data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
@@ -163,6 +174,7 @@ class Player2:
             elif map[new_y][new_x] == 'l':
                 ret = True
                 alive = True
+                monster_killed = False
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
                 self.life = self.life + 1
@@ -173,6 +185,7 @@ class Player2:
             elif map[new_y][new_x] == 'p':
                 ret = True
                 alive = True
+                monster_killed = False
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
                 self.potion = self.potion + 1
@@ -183,6 +196,7 @@ class Player2:
             elif map[new_y][new_x] == 'w':
                 ret = True
                 alive = True
+                monster_killed = False
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
                 self.weapon = self.weapon + 1
@@ -193,6 +207,7 @@ class Player2:
             elif map[new_y][new_x] == '$':
                 ret = True
                 alive = True
+                monster_killed = False
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
                 self.money = self.money + 1
@@ -204,31 +219,36 @@ class Player2:
                 if self.weapon > 0:
                     ret = False
                     alive = True
+                    monster_killed = True
                     self.weapon = self.weapon - 1
                     data = []
                     items = {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}
                 else:
                     ret = False
                     alive = True
+                    monster_killed = False
                     self.life = self.life - 1
                     data = []
                     items = {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}
                     if self.life == 0:
                         ret = False
                         alive = False
+                        monster_killed = False
                         data = []
                         items = {"life": 0, "potion": self.potion, "weapon": self.weapon, "money": self.money}
             else:
                 ret = False
                 alive = True
+                monster_killed = False
                 data = []
                 items = {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}
         else:
             ret = False
             alive = False
+            monster_killed = False
             data = []
             items = {"life": 0, "potion": self.potion, "weapon": self.weapon, "money": self.money}
-        return data, ret, items, alive
+        return data, ret, items, alive, monster_killed
 
 class Monster:
     def __init__(self, symbol='m'):
@@ -252,8 +272,6 @@ class Monster:
     def move(self, dx, dy, map):
         new_x = self._x + dx
         new_y = self._y + dy
-        print("testing move function")
-        print(f"{map[new_y][new_x]=}")
 
         if map[new_y][new_x] == '.':
             ret = True

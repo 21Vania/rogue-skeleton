@@ -26,7 +26,9 @@ def on_move_msg(json, methods=["GET", "POST"]):
         print('ret ok man')
         socketio.emit("response", data)
         socketio.emit("response1", items)
-    if not alive:
+    elif not ret:
+        socketio.emit("response1", items)
+    elif not ret and not alive:
         print('player1 is dead')
         socketio.emit("death p1")
         socketio.emit("response1", items)
@@ -42,7 +44,9 @@ def on_move_msg2(json, methods=["GET", "POST"]):
     if ret:
         socketio.emit("response", data)
         socketio.emit("response2", items)
-    if not alive:
+    elif not ret:
+        socketio.emit("response2", items)
+    elif not ret and not alive:
         print('player2 is dead')
         socketio.emit("death p2")
         socketio.emit("response2", items)

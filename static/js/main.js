@@ -135,6 +135,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
         document.getElementById("player2").textContent = 'Player 2 is dead';
     });
 
+    socket.on("monster killed p1", function(){
+        document.getElementById("monster_killed").textContent = 'Monster killed : 1';
+        document.getElementById("instruction").textContent = 'Congratulations ! You killed the monster';
+    })
+
+    socket.on("monster killed p2", function(){
+        document.getElementById("monster_killed2").textContent = 'Monster killed : 1';
+        document.getElementById("instruction").textContent = 'Congratulations ! You killed the monster';
+    })
 
 
 

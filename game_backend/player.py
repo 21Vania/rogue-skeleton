@@ -64,6 +64,13 @@ class Player:
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
                 self.potion = self.potion + 1
+                p = random.choice(["poison", "invicibility", "weapon"])
+                if p == "poison":
+                    self.life = self.life - 1
+                elif p == "invicibility":
+                    self.life = self.life + 1
+                elif p == "weapon":
+                    self.weapon = self.weapon + 1
                 data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
                 items = {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}
                 self._x = new_x
@@ -189,6 +196,13 @@ class Player2:
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
                 self.potion = self.potion + 1
+                p = random.choice(["poison", "invicibility", "weapon"])
+                if p == "poison":
+                    self.life = self.life - 1
+                elif p == "invicibility":
+                    self.life = self.life + 1
+                elif p == "weapon":
+                    self.weapon = self.weapon + 1
                 data = [{"i": f"{self._y}", "j":f"{self._x}", "content":'.'}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
                 items = {"life": self.life, "potion": self.potion, "weapon": self.weapon, "money": self.money}
                 self._x = new_x
